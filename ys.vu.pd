@@ -1,0 +1,104 @@
+#N canvas 398 109 450 300 12;
+#X obj 111 122 vu 15 120 \$0-vu-L empty 20 10 1 24 #404040 #000000
+0 0;
+#X obj 131 122 vu 15 120 \$0-vu-R empty 20 10 1 24 #404040 #000000
+0 0;
+#N canvas 329 161 625 417 vu 0;
+#X obj 59 129 env~ 1024;
+#X obj 161 111 abs~;
+#X obj 161 213 snapshot~;
+#X obj 161 256 rmstodb;
+#X obj 161 21 inlet~;
+#X obj 161 288 - 100;
+#X obj 59 287 - 100;
+#X obj 59 361 outlet;
+#X obj 161 361 outlet;
+#X text 344 307 Check the help file of env~ and slop~ for more details.
+, f 31;
+#X obj 239 89 expr 1000 / $f1;
+#X floatatom 239 117 5 0 0 0 - - - 0;
+#X obj 161 146 slop~ 0 0 0 0 1e+09;
+#X obj 239 18 inlet;
+#X floatatom 239 57 5 0 0 0 - - - 0;
+#X text 359 89 convert to hz;
+#X text 282 118 hz;
+#X text 284 57 peak decay time in ms;
+#X obj 59 171 t f b;
+#X text 345 132 The env~ object is dedicated to RMS analysis. Its output
+is in dB (0-100 range \, pd style) but needs to be converted to dBFS
+(and we do that by simply subtracting 100)., f 31;
+#X text 345 225 The slop~ object is used here for peak detection. We
+need to convert the output to dB with rmstodb and also subtract by
+100 to convert it to dBFS., f 31;
+#X connect 0 0 18 0;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 4 0 1 0;
+#X connect 5 0 8 0;
+#X connect 6 0 7 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 3;
+#X connect 12 0 2 0;
+#X connect 13 0 14 0;
+#X connect 14 0 10 0;
+#X connect 18 0 6 0;
+#X connect 18 1 2 0;
+#X restore 234 50 pd vu;
+#N canvas 329 161 625 417 vu 0;
+#X obj 59 129 env~ 1024;
+#X obj 161 111 abs~;
+#X obj 161 213 snapshot~;
+#X obj 161 256 rmstodb;
+#X obj 161 21 inlet~;
+#X obj 161 288 - 100;
+#X obj 59 287 - 100;
+#X obj 59 361 outlet;
+#X obj 161 361 outlet;
+#X text 344 307 Check the help file of env~ and slop~ for more details.
+, f 31;
+#X obj 239 89 expr 1000 / $f1;
+#X floatatom 239 117 5 0 0 0 - - - 0;
+#X obj 161 146 slop~ 0 0 0 0 1e+09;
+#X obj 239 18 inlet;
+#X floatatom 239 57 5 0 0 0 - - - 0;
+#X text 359 89 convert to hz;
+#X text 282 118 hz;
+#X text 284 57 peak decay time in ms;
+#X obj 59 171 t f b;
+#X text 345 132 The env~ object is dedicated to RMS analysis. Its output
+is in dB (0-100 range \, pd style) but needs to be converted to dBFS
+(and we do that by simply subtracting 100)., f 31;
+#X text 345 225 The slop~ object is used here for peak detection. We
+need to convert the output to dB with rmstodb and also subtract by
+100 to convert it to dBFS., f 31;
+#X connect 0 0 18 0;
+#X connect 1 0 12 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 0 0;
+#X connect 4 0 1 0;
+#X connect 5 0 8 0;
+#X connect 6 0 7 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 3;
+#X connect 12 0 2 0;
+#X connect 13 0 14 0;
+#X connect 14 0 10 0;
+#X connect 18 0 6 0;
+#X connect 18 1 2 0;
+#X restore 303 51 pd vu;
+#X obj 232 89 s \$0-vu-L;
+#X obj 316 91 s \$0-vu-R;
+#X obj 233 22 inlet~;
+#X obj 305 20 inlet~;
+#X obj 235 143 outlet;
+#X obj 308 144 outlet;
+#X connect 2 0 4 0;
+#X connect 2 0 8 0;
+#X connect 3 0 5 0;
+#X connect 3 0 9 0;
+#X connect 6 0 2 0;
+#X connect 7 0 3 0;
+#X coords 0 -1 1 1 60 150 1 100 100;
